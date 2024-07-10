@@ -6,7 +6,7 @@
                 <img src="{{ asset('assets/img/logo-keygold.png') }}" class="h-10 md:h-12"
                     alt="PT Key Gold Investama Logo">
             </a>
-            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+            <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse items-center">
                 <button data-collapse-toggle="navbar-sticky" type="button"
                     class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-emas md:hidden focus:outline-none focus:ring-2 focus:ring-emas focus:text-putih focus:bg-emas dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
                     aria-controls="navbar-sticky" aria-expanded="false">
@@ -17,10 +17,31 @@
                             d="M1 1h15M1 7h15M1 13h15" />
                     </svg>
                 </button>
+                <button id="dropdownNavbarLink" data-dropdown-toggle="dropdownNavbar"
+                    class="flex items-center justify-between w-full text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 md:w-auto dark:text-white md:dark:hover:text-blue-500 dark:focus:text-white dark:hover:bg-gray-700 md:dark:hover:bg-transparent">
+                    <img src="{{ asset('assets/icons/person.png') }}" alt="icons-person">
+                </button>
+                <!-- Dropdown menu -->
+                <div id="dropdownNavbar"
+                    class="z-30 hidden font-normal bg-putih divide-y divide-gray-100 rounded-sm shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
+                    <ul class="text-md font-medium tracking-wide text-emas dark:text-gray-200"
+                        aria-labelledby="dropdownLargeButton">
+                        <li>
+                            <a href="#"
+                                class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Masuk
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Register
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
                 <ul
-                    class="flex flex-col p-4 md:p-0 mt-4 text-md lg:text-lg font-medium border border-abu rounded-none bg-putih md:space-x-24 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-putih dark:bg-gray-800 md:dark:bg-hijau dark:border-gray-700">
+                    class="flex flex-col p-4 md:p-0 mt-4 text-md lg:text-lg font-medium border border-abu rounded-none bg-putih md:space-x-8 lg:space-x-24 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-putih dark:bg-gray-800 md:dark:bg-hijau dark:border-gray-700">
                     <li>
                         <a href="#"
                             class="block py-2 px-3 text-white bg-emas rounded md:bg-transparent md:text-emas md:p-0 md:dark:text-blue-500"
@@ -32,11 +53,13 @@
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 text-hijau rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-emas md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Artikel & Berita</a>
+                            class="block py-2 px-3 text-hijau rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-emas md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Artikel
+                            & Berita</a>
                     </li>
                     <li>
                         <a href="#"
-                            class="block py-2 px-3 text-hijau rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-emas md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tentang Kami</a>
+                            class="block py-2 px-3 text-hijau rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-emas md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Tentang
+                            Kami</a>
                     </li>
                 </ul>
             </div>

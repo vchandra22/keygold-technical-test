@@ -1,5 +1,5 @@
 <section class="footer-section-area">
-
+    <hr>
     <footer class="bg-putih dark:bg-gray-900">
         <div class="mx-auto w-full max-w-screen-2xl p-4 py-6 lg:py-8">
             <div class="grid grid-cols-1 md:grid-cols-2">

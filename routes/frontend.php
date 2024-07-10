@@ -9,3 +9,6 @@ Route::middleware(['web'])->group(function () {
 Route::get('/', function () {
     return view('frontend.home.home');
 });
+Route::get('/login', function () {
+    return view('auth.login');
+});
