@@ -48,7 +48,7 @@ class ProductController extends Controller
             })
             ->addColumn('opsi', function ($data) {
 
-                $detailRoute = '#';
+                $detailRoute = route('admin.editProduct', ['product' => $data->uuid]);
 
                 return '<a href="' . $detailRoute . '" class="py-2 text-md text-emas font-paragraph cursor-pointer hover:underline">Detail</a>';
             })
@@ -138,9 +138,12 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Product $product)
+    public function edit($uuid)
     {
-        //
+        $data['pageTitle'] = 'Edit Produk';
+        $data['productData'] = Product::where('uuid', $uuid)->firstOrFail();
+
+        return view('admin.products.edit', $data);
     }
 
     /**
@@ -148,14 +151,70 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $validatedData = $request->validate([
+            'nama_produk' => ['required', 'string', 'max:255'],
+            'deskripsi_produk' => ['required', 'string', 'min:10'],
+            'merek' => ['required', 'string', 'max:100'],
+            'berat' => ['required', 'numeric', 'min:0'],
+            'harga_jual' => ['required', 'numeric', 'min:0'],
+            'total_stock' => ['required', 'integer', 'min:0'],
+            'status' => ['required', 'in:tersedia,habis'],
+            'gambar' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+            'meta_title' => ['nullable', 'string', 'max:60'],
+            'meta_description' => ['nullable', 'string', 'max:160'],
+            'meta_keywords' => ['nullable', 'string'],
+            'og_image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,webp', 'max:2048'],
+        ]);
+
+        if (isset($validatedData['gambar'])) {
+            // Process 'ttd_kepala' if it exists
+            if ($request->hasFile('gambar')) {
+                // Handle file upload and storage
+                $file = $request->file('gambar');
+                $directoryPath = 'img';
+
+                // Create directory if not exists
+                if (!file_exists($directoryPath)) {
+                    Storage::disk('public')->makeDirectory($directoryPath, 0775, true);
+                }
+
+                $filename = Str::random(20) . '.' . $file->getClientOriginalExtension();
+                Storage::disk('public')->put('/img/' . $filename, File::get($file));
+                $validatedData['gambar'] = $filename;
+            }
+        }
+
+        if (isset($validatedData['og_image'])) {
+            // Process 'ttd_kepala' if it exists
+            if ($request->hasFile('og_image')) {
+                // Handle file upload and storage
+                $file = $request->file('og_image');
+                $directoryPath = 'img';
+
+                // Create directory if not exists
+                if (!file_exists($directoryPath)) {
+                    Storage::disk('public')->makeDirectory($directoryPath, 0775, true);
+                }
+
+                $filename = Str::random(20) . '.' . $file->getClientOriginalExtension();
+                Storage::disk('public')->put('/img/' . $filename, File::get($file));
+                $validatedData['og_image'] = $filename;
+            }
+        }
+
+        Product::where('uuid', $product->uuid)->update($validatedData);
+
+        return redirect(route('admin.product'))->with('success', 'Data berhasil diupdate!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Product $product)
+    public function destroy($uuid)
     {
-        //
+        $product = Product::where('uuid', $uuid)->first();
+        $product->delete();
+
+        return redirect(route('admin.product'))->with('success', 'Data produk berhasil dihapus!');
     }
 }

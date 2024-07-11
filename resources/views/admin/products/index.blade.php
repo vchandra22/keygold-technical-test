@@ -10,7 +10,7 @@
                 </h1>
                 <div>
                     <a href="{{ route('admin.createProduct') }}"
-                        class="w-full text-md font-normal text-end text-emas hover:text-hijau hover:underline rounded-none sm:w-auto">Tambah
+                        class="w-full text-lg font-normal text-end text-emas hover:text-hijau hover:underline rounded-none sm:w-auto">Tambah
                         Produk
                     </a>
                 </div>
@@ -30,10 +30,10 @@
                             Merek
                         </th>
                         <th>
-                            Berat
+                            Berat (gram)
                         </th>
                         <th>
-                            Harga Jual
+                            Harga Jual (Rp)
                         </th>
                         <th>
                             Status

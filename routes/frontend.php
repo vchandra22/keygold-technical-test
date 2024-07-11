@@ -12,4 +12,7 @@ Route::middleware(['web'])->group(function () {
     Route::post('logout', [AuthUserController::class, 'destroy'])->name('auth.logout');
     Route::get('register', [RegisterUserController::class, 'create'])->name('auth.register');
     Route::post('register', [RegisterUserController::class, 'store'])->name('auth.sign-up');
+
+    Route::get('product/{uuid}', [MainIndexController::class, 'show'])->name('frontend.detailProduct');
+
 });

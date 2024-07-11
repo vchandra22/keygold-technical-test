@@ -95,13 +95,22 @@
                     <span class="ms-4">Produk</span>
                 </a>
             </li>
+            <li>
+                <a href="#"
+                    class="flex items-center gap-8 p-2 text-emas rounded-lg dark:text-secondary hover:text-hijau hover:bg-abu group">
+                    <div class="w-5 h-6 text-emas transition duration-75 group-hover:text-hijau">
+                        <i class="fa-solid fa-users fa-lg"></i>
+                    </div>
+                    <span class="ms-4">Customer</span>
+                </a>
+            </li>
         </ul>
 
         <div>
             <ul class="space-y-4 font-semibold tracking-wide">
                 <li>
                     <a href="#"
-                        class="flex items-center p-2 text-emas rounded-lg dark:text-secondary hover:text-hijau hover:bg-abu group">
+                        class="flex items-center gap-8 p-2 text-emas rounded-lg dark:text-secondary hover:text-hijau hover:bg-abu group">
                         <div class="w-5 h-6 text-gray-500 transition duration-75 group-hover:text-hijau">
                             <i class="fa-solid fa-gear fa-lg"></i>
                         </div>
@@ -116,7 +125,7 @@
                             <div class="w-full h-6 text-gray-500 transition duration-75 group-hover:text-hijau">
                                 <div>
                                     <i class="fa-solid fa-arrow-right-from-bracket fa-lg"></i>
-                                    <span class="ms-3">Logout</span>
+                                    <span class="ms-11">Logout</span>
                                 </div>
                             </div>
                         </button>

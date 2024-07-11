@@ -18,7 +18,7 @@ return new class extends Migration
             $table->text('deskripsi_produk')->nullable();
             $table->string('merek')->nullable();
             $table->float('berat')->nullable();
-            $table->float('harga_jual')->nullable();
+            $table->decimal('harga_jual', 15, 2)->nullable();
             $table->integer('total_stock')->nullable();
             $table->enum('status', ['tersedia', 'habis'])->default('tersedia')->nullable();
             $table->string('gambar')->nullable();

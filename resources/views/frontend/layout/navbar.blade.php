@@ -42,7 +42,7 @@
                                     <div
                                         class="inline-flex items-center w-full justify-start gap-4 cursor-default py-3 hover:bg-gray-100">
                                         <i class=" px-4 fa-solid fa-layer-group"></i>
-                                        <a href="#" class="hover:bg-gray-100">
+                                        <a href="{{ route('admin.dashboard') }}" class="hover:bg-gray-100">
                                             Dashboard
                                         </a>
                                     </div>
@@ -94,9 +94,8 @@
                 <ul
                     class="flex flex-col p-4 md:p-0 mt-4 text-md lg:text-lg font-medium border border-abu rounded-none bg-putih md:space-x-8 lg:space-x-24 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-putih dark:bg-gray-800 md:dark:bg-hijau dark:border-gray-700">
                     <li>
-                        <a href="#"
-                            class="block py-2 px-3 text-white bg-emas rounded md:bg-transparent md:text-emas md:p-0 md:dark:text-blue-500"
-                            aria-current="page">Beranda</a>
+                        <a href="{{ route('frontend.home') }}"
+                            class="block py-2 px-3 text-hijau rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-emas md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700">Beranda</a>
                     </li>
                     <li>
                         <a href="#"

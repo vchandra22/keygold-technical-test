@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->uuid('uuid')->index();
             $table->unsignedBigInteger('transaksi_id')->nullable();
-            $table->float('total_bayar');
+            $table->decimal('total_bayar', 15, 2);
             $table->timestamps();
 
             $table->foreign('transaksi_id')->references('id')->on('transactions')->onDelete('cascade');

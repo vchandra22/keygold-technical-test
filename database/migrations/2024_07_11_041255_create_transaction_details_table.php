@@ -17,7 +17,7 @@ return new class extends Migration
             $table->unsignedBigInteger('transaksi_id')->nullable();
             $table->unsignedBigInteger('produk_id')->nullable();
             $table->integer('total_pemesanan')->nullable();
-            $table->float('total_harga')->nullable();
+            $table->decimal('total_harga', 15, 2)->nullable();
             $table->timestamps();
 
             $table->foreign('transaksi_id')->references('id')->on('transactions')->onDelete('cascade');
