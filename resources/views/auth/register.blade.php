@@ -10,27 +10,66 @@
                     <div class="hidden md:flex flex-col justify-center text-center lg:text-start">
                         <h1
                             class="mb-1 md:mb-4 text-2xl font-bold tracking-tight leading-none text-hijau md:text-5xl lg:text-6xl">
-                            Silakan masuk untuk mengakses akun dan mulailah perjalanan investasi Anda
+                            Daftarkan akun Anda untuk mendapatkan akses eksklusif dan keuntungan menarik
                         </h1>
                     </div>
                     <div>
                         <div class="w-full p-6 space-y-4 sm:py-12 bg-putih border border-abu shadow-sm">
                             <h2 class="text-3xl font-bold text-hijau">
-                                Masuk ke Akun Anda
+                                Daftar Akun Baru
                             </h2>
+
+
 
                             {{-- login form start --}}
                             <form class="mt-8 space-y-6" action="#" method="POST">
                                 @csrf
+
+                                {{-- input no.identitas start --}}
+                                <div>
+                                    <label for="no_identitas" class="block mb-2 text-sm font-medium text-hijau">
+                                        No. Identitas (KTP, SIM, Paspor)
+                                    </label>
+                                    <input type="no_identitas" name="no_identitas" id="no_identitas"
+                                        class="bg-putih border border-hijau text-hijau text-md focus:ring-emas focus:border-emas block w-full p-2.5"
+                                        placeholder="Masukkan nomor identitas berupa nomor KTP, SIM, atau Paspor"
+                                        value="{{ old('no_identitas') }}" required autofocus />
+                                </div>
+                                {{-- input no.identitas end --}}
+
+                                {{-- input nama lengkap start --}}
+                                <div>
+                                    <label for="nama_lengkap" class="block mb-2 text-sm font-medium text-hijau">
+                                        Nama Lengkap
+                                    </label>
+                                    <input type="nama_lengkap" name="nama_lengkap" id="nama_lengkap"
+                                        class="bg-putih border border-hijau text-hijau text-md focus:ring-emas focus:border-emas block w-full p-2.5"
+                                        placeholder="Vincent Chandra"
+                                        value="{{ old('nama_lengkap') }}" required />
+                                </div>
+                                {{-- input nama lengkap end --}}
+
+                                {{-- input alamat start --}}
+                                <div>
+                                    <label for="alamat" class="block mb-2 text-sm font-medium text-hijau">
+                                        Alamat
+                                    </label>
+                                    <input type="alamat" name="alamat" id="alamat"
+                                        class="bg-putih border border-hijau text-hijau text-md focus:ring-emas focus:border-emas block w-full p-2.5"
+                                        placeholder="Gunakan alamat saat ini Anda tinggal"
+                                        value="{{ old('alamat') }}" required />
+                                </div>
+                                {{-- input alamat end --}}
+
                                 {{-- input email start --}}
                                 <div>
                                     <label for="email" class="block mb-2 text-sm font-medium text-hijau">
-                                        Alamat email
+                                        Email
                                     </label>
                                     <input type="email" name="email" id="email"
                                         class="bg-putih border border-hijau text-hijau text-md focus:ring-emas focus:border-emas block w-full p-2.5"
-                                        placeholder="Gunakan Alamat email terdaftar untuk bisa masuk"
-                                        value="{{ old('email') }}" required autofocus />
+                                        placeholder="vincentchaandra@gmail.com"
+                                        value="{{ old('email') }}" required />
                                 </div>
                                 {{-- input email end --}}
 
@@ -69,13 +108,13 @@
                                 {{-- button login start --}}
                                 <button type="submit"
                                     class="w-full px-8 py-2 text-base font-medium text-center text-putih bg-emas rounded-none hover:bg-hijau focus:ring-2 focus:ring-emas sm:w-auto">
-                                    Login
+                                    Daftar
                                 </button>
                                 {{-- button login end --}}
 
                                 {{-- don't have account start --}}
                                 <div class="text-sm font-medium text-hijau">
-                                    Tidak punya akun? <a href="#" class="text-emas underline">Register</a>
+                                    Sudah punya akun? <a href="#" class="text-emas underline">Masuk</a>
                                 </div>
                                 {{-- don't have account end --}}
 
@@ -86,6 +125,7 @@
                 </div>
             </div>
         </div>
+
     </section>
     {{-- section login end --}}
 @endsection
