@@ -3,7 +3,7 @@
 @section('content')
     {{-- section login start --}}
     <section class="mt-[4.1rem] bg-putih">
-        <div class="max-w-screen-2xl min-h-screen mx-auto h-screen grid items-center">
+        <div class="max-w-screen-2xl min-h-screen mx-auto h-full grid items-center">
             <div>
                 <div
                     class="py-8 px-4 md:px-16 mx-auto max-w-screen-2xl lg:py-16 grid lg:grid-cols-2 gap-0 lg:gap-16 dark:border dark:border-1 justify-between">
@@ -22,7 +22,7 @@
 
 
                             {{-- login form start --}}
-                            <form class="mt-8 space-y-6" action="#" method="POST">
+                            <form class="mt-12 space-y-6" action="{{ route('auth.sign-up') }}" method="POST">
                                 @csrf
 
                                 {{-- input no.identitas start --}}
@@ -34,6 +34,11 @@
                                         class="bg-putih border border-hijau text-hijau text-md focus:ring-emas focus:border-emas block w-full p-2.5"
                                         placeholder="Masukkan nomor identitas berupa nomor KTP, SIM, atau Paspor"
                                         value="{{ old('no_identitas') }}" required autofocus />
+                                    @error('no_identitas')
+                                        <div class="mt-1 text-red-500 text-xs">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 {{-- input no.identitas end --}}
 
@@ -44,10 +49,30 @@
                                     </label>
                                     <input type="nama_lengkap" name="nama_lengkap" id="nama_lengkap"
                                         class="bg-putih border border-hijau text-hijau text-md focus:ring-emas focus:border-emas block w-full p-2.5"
-                                        placeholder="Vincent Chandra"
-                                        value="{{ old('nama_lengkap') }}" required />
+                                        placeholder="Vincent Chandra" value="{{ old('nama_lengkap') }}" required />
+                                    @error('nama_lengkap')
+                                        <div class="mt-1 text-red-500 text-xs">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 {{-- input nama lengkap end --}}
+
+                                {{-- input no.hp start --}}
+                                <div>
+                                    <label for="no_hp" class="block mb-2 text-sm font-medium text-hijau">
+                                        No. HP
+                                    </label>
+                                    <input type="no_hp" name="no_hp" id="no_hp"
+                                        class="bg-putih border border-hijau text-hijau text-md focus:ring-emas focus:border-emas block w-full p-2.5"
+                                        placeholder="081244566666" value="{{ old('no_hp') }}" required />
+                                    @error('no_hp')
+                                        <div class="mt-1 text-red-500 text-xs">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                                {{-- input no.hp end --}}
 
                                 {{-- input alamat start --}}
                                 <div>
@@ -56,8 +81,13 @@
                                     </label>
                                     <input type="alamat" name="alamat" id="alamat"
                                         class="bg-putih border border-hijau text-hijau text-md focus:ring-emas focus:border-emas block w-full p-2.5"
-                                        placeholder="Gunakan alamat saat ini Anda tinggal"
-                                        value="{{ old('alamat') }}" required />
+                                        placeholder="Gunakan alamat saat ini Anda tinggal" value="{{ old('alamat') }}"
+                                        required />
+                                    @error('alamat')
+                                        <div class="mt-1 text-red-500 text-xs">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 {{-- input alamat end --}}
 
@@ -68,8 +98,12 @@
                                     </label>
                                     <input type="email" name="email" id="email"
                                         class="bg-putih border border-hijau text-hijau text-md focus:ring-emas focus:border-emas block w-full p-2.5"
-                                        placeholder="vincentchaandra@gmail.com"
-                                        value="{{ old('email') }}" required />
+                                        placeholder="vincentchaandra@gmail.com" value="{{ old('email') }}" required />
+                                    @error('email')
+                                        <div class="mt-1 text-red-500 text-xs">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 {{-- input email end --}}
 
@@ -80,41 +114,39 @@
                                     <input type="password" name="password" id="password" placeholder="••••••••"
                                         class="bg-putih border border-hijau text-hijau text-sm focus:ring-emas focus:border-emas block w-full p-2.5"
                                         required />
+                                    @error('password')
+                                        <div class="mt-1 text-red-500 text-xs">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+
+                                <div>
+                                    <label for="password_confirmation" class="block mb-2 text-sm font-medium text-hijau">
+                                        Konfirmasi Password</label>
+                                    <input type="password" name="password_confirmation" id="password_confirmation"
+                                        placeholder="••••••••"
+                                        class="bg-putih border border-hijau text-hijau text-sm focus:ring-emas focus:border-emas block w-full p-2.5"
+                                        required />
+                                    @error('password')
+                                        <div class="mt-1 text-red-500 text-xs">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                                 {{-- input password end --}}
 
-
-                                <div class="flex items-center">
-                                    {{-- remember me start --}}
-                                    <div class="flex items-start h-5">
-                                        <input id="remember" aria-describedby="remember" name="remember" type="checkbox"
-                                            value="1"
-                                            class="w-4 h-4 border-hijau bg-gray-100 focus:ring-3 focus:ring-emas dark:focus:ring-neutral-600 dark:ring-offset-gray-800 dark:bg-neutral-700 dark:border-neutral-700" />
-                                    </div>
-                                    <div class="ms-3 text-sm">
-                                        <label for="remember" class="font-medium text-hijau dark:text-hijau">Ingat
-                                            saya</label>
-                                    </div>
-                                    {{-- remember me end --}}
-
-                                    {{-- forgot password start --}}
-                                    {{-- <a href="#"
-                                                class="ms-auto text-sm font-medium text-accent hover:text-primary-500 hover:underline dark:text-abu-500">Lupa
-                                                Password?
-                                            </a> --}}
-                                    {{-- forgot password end --}}
-                                </div>
-
-                                {{-- button login start --}}
+                                {{-- button daftar start --}}
                                 <button type="submit"
                                     class="w-full px-8 py-2 text-base font-medium text-center text-putih bg-emas rounded-none hover:bg-hijau focus:ring-2 focus:ring-emas sm:w-auto">
                                     Daftar
                                 </button>
-                                {{-- button login end --}}
+                                {{-- button daftar end --}}
 
                                 {{-- don't have account start --}}
                                 <div class="text-sm font-medium text-hijau">
-                                    Sudah punya akun? <a href="#" class="text-emas underline">Masuk</a>
+                                    Sudah punya akun? <a href="{{ route('auth.login') }}"
+                                        class="text-emas underline">Masuk</a>
                                 </div>
                                 {{-- don't have account end --}}
 

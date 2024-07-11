@@ -23,19 +23,70 @@
                 </button>
                 <!-- Dropdown menu -->
                 <div id="dropdownNavbar"
-                    class="z-30 hidden font-normal bg-putih divide-y divide-gray-100 rounded-sm shadow-sm w-44 dark:bg-gray-700 dark:divide-gray-600">
+                    class="z-30 hidden font-normal bg-putih divide-y divide-gray-100 rounded-sm shadow-sm w-60 dark:bg-gray-700 dark:divide-gray-600">
                     <ul class="text-md font-medium tracking-wide text-emas dark:text-gray-200"
                         aria-labelledby="dropdownLargeButton">
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Masuk
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"
-                                class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Register
-                            </a>
-                        </li>
+                        @if (Auth::guard('web')->check())
+                            <li>
+                                <div
+                                    class="inline-flex items-center w-full justify-start gap-4 cursor-default py-3 hover:bg-gray-100">
+                                    <i class="px-4 fa-solid fa-user"></i>
+                                    <p class="overflow-hidden line-clamp-1 mr-4">
+                                        {{ auth()->guard('web')->user()->nama_lengkap }}
+                                    </p>
+                                </div>
+                            </li>
+
+                            @if (Auth::user()->hasRole('admin'))
+                                <li>
+                                    <div
+                                        class="inline-flex items-center w-full justify-start gap-4 cursor-default py-3 hover:bg-gray-100">
+                                        <i class=" px-4 fa-solid fa-layer-group"></i>
+                                        <a href="#" class="hover:bg-gray-100">
+                                            Dashboard
+                                        </a>
+                                    </div>
+                                </li>
+                            @else
+                                <li>
+                                    <div
+                                        class="inline-flex items-center w-full justify-start gap-4 cursor-default py-3 hover:bg-gray-100">
+                                        <i class="px-4 fa-solid fa-cart-shopping"></i>
+                                        <a href="#" class="hover:bg-gray-100">
+                                            Pesanan Saya
+                                        </a>
+                                    </div>
+                                </li>
+                            @endif
+
+                            <li class="py-3 hover:bg-gray-100">
+                                <form action="{{ route('auth.logout') }}" method="POST">
+                                    @csrf
+                                    <div class="inline-flex items-center w-full justify-start gap-4">
+                                        <div>
+                                            <i class="px-4 fa-solid fa-arrow-right-from-bracket"></i>
+                                        </div>
+                                        <div>
+                                            <button type="submit">
+                                                Logout
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+
+                            </li>
+                        @else
+                            <li>
+                                <a href="{{ route('auth.login') }}"
+                                    class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Masuk
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('auth.register') }}"
+                                    class="block px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Register
+                                </a>
+                            </li>
+                        @endif
                     </ul>
                 </div>
             </div>

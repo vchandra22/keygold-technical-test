@@ -3,6 +3,62 @@
 @section('content')
     {{-- jumbotron section start --}}
     <section class="mt-[4.1rem] bg-putih dark:bg-gray-900">
+        {{-- toast start --}}
+        @if (session()->has('loginError'))
+            <div id="toast-danger"
+                class="fixed flex items-center w-full max-w-xs p-4 mb-4 text-hijau border border-gray-100 bg-putih shadow-sm top-5 right-5 mt-[4.4rem]"
+                role="alert">
+                <div
+                    class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-red-500 bg-transparent dark:text-red-500">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 11.793a1 1 0 1 1-1.414 1.414L10 11.414l-2.293 2.293a1 1 0 0 1-1.414-1.414L8.586 10 6.293 7.707a1 1 0 0 1 1.414-1.414L10 8.586l2.293-2.293a1 1 0 0 1 1.414 1.414L11.414 10l2.293 2.293Z" />
+                    </svg>
+                    <span class="sr-only">Error icon</span>
+                </div>
+                <div class="ms-3 text-sm font-normal">{{ session('loginError') }}</div>
+                <button type="button"
+                    class="ms-auto -mx-1.5 -my-1.5 bg-putih text-hijau rounded-sm focus:ring-2 focus:ring-gray-300 p-1.5 inline-flex items-center justify-center h-8 w-8"
+                    data-dismiss-target="#toast-danger" aria-label="Close">
+                    <span class="sr-only">Close</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div id="toast-success"
+                class="fixed flex items-center w-full max-w-xs p-4 mb-4 text-hijau border border-gray-100 bg-putih shadow-sm top-5 right-5 mt-[4.4rem]"
+                role="alert">
+                <div
+                    class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-500 bg-transparent dark:text-green-500">
+                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                        viewBox="0 0 20 20">
+                        <path
+                            d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
+                    </svg>
+                    <span class="sr-only">Check icon</span>
+                </div>
+                <div class="ms-3 text-sm font-normal">{{ session('success') }}</div>
+                <button type="button"
+                    class="ms-auto -mx-1.5 -my-1.5 bg-putih text-hijau rounded-sm focus:ring-2 focus:ring-gray-300 p-1.5 inline-flex items-center justify-center h-8 w-8"
+                    data-dismiss-target="#toast-success" aria-label="Close">
+                    <span class="sr-only">Close</span>
+                    <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                        viewBox="0 0 14 14">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                    </svg>
+                </button>
+            </div>
+        @endif
+        {{-- toast end --}}
+
         <div class="pt-8 px-4 mx-auto max-w-screen-2xl text-start lg:pt-16 overflow-hidden">
             <div class="grid lg:grid-cols-2 gap-8 lg:gap-12">
                 <div class="my-auto">
@@ -88,6 +144,7 @@
         </div>
     </section>
     {{-- section layanan end --}}
+
     {{-- list product start --}}
     <section class="bg-gray-50">
         <div class="max-w-screen-2xl px-4 mx-auto pb-12">
@@ -99,13 +156,13 @@
             </div>
 
             <div class="mb-4 grid gap-4 sm:grid-cols-2 md:mb-8 lg:grid-cols-3 xl:grid-cols-4">
-                <div class="border border-abu bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                <div class="border border-abu bg-putih p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
                     <div class="h-56 w-auto overflow-hidden">
                         <a href="#">
                             <img class="mx-auto h-full dark:hidden" src="{{ asset('assets/img/sample-product.png') }}"
                                 alt="sample product foto" />
-                            <img class="mx-auto hidden h-full dark:block" src="{{ asset('assets/img/sample-product.png') }}"
-                                alt="sample product foto" />
+                            <img class="mx-auto hidden h-full dark:block"
+                                src="{{ asset('assets/img/sample-product.png') }}" alt="sample product foto" />
                         </a>
                     </div>
                     <div>
@@ -118,8 +175,8 @@
                             <button type="button" data-tooltip-target="tooltip-add-to-favorites"
                                 class="rounded-lg p-2 text-gray-500 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
                                 <span class="sr-only"> Add to Favorites </span>
-                                <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
-                                    viewBox="0 0 24 24">
+                                <svg class="h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 24 24">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
                                         stroke-width="2" d="M12 6C6.5 1 1 8 5.8 13l6.2 7 6.2-7C23 8 17.5 1 12 6Z" />
                                 </svg>
@@ -153,19 +210,14 @@
                             <p class="text-2xl font-paragraph font-extrabold leading-tight text-hijau dark:text-white">Rp
                                 740,000</p>
                             <button type="button"
-                                class="inline-flex items-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                <svg class="-ms-2 me-2 h-5 w-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                    width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                        stroke-width="2"
-                                        d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6" />
-                                </svg>
-                                Add to cart
+                                class="inline-flex items-center rounded-sm bg-emas font-paragraph px-5 py-2.5 text-sm font-medium text-putih hover:bg-hijau focus:outline-none focus:ring-4 gap-2 focus:ring-hijau">
+                                <i class="fa-solid fa-cart-shopping"></i>
+                                Keranjang
                             </button>
                         </div>
                     </div>
                 </div>
-                <div class="border border-abu bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                <div class="border border-abu bg-putih p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
                     <div class="h-56 w-auto overflow-hidden">
                         <a href="#">
                             <img class="mx-auto h-full dark:hidden" src="{{ asset('assets/img/sample-product.png') }}"
@@ -231,7 +283,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="border border-abu bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                <div class="border border-abu bg-putih p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
                     <div class="h-56 w-auto overflow-hidden">
                         <a href="#">
                             <img class="mx-auto h-full dark:hidden" src="{{ asset('assets/img/sample-product.png') }}"
@@ -297,7 +349,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="border border-abu bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                <div class="border border-abu bg-putih p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
                     <div class="h-56 w-auto overflow-hidden">
                         <a href="#">
                             <img class="mx-auto h-full dark:hidden" src="{{ asset('assets/img/sample-product.png') }}"
@@ -363,7 +415,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="border border-abu bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                <div class="border border-abu bg-putih p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
                     <div class="h-56 w-auto overflow-hidden">
                         <a href="#">
                             <img class="mx-auto h-full dark:hidden" src="{{ asset('assets/img/sample-product.png') }}"
@@ -429,7 +481,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="border border-abu bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                <div class="border border-abu bg-putih p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
                     <div class="h-56 w-auto overflow-hidden">
                         <a href="#">
                             <img class="mx-auto h-full dark:hidden" src="{{ asset('assets/img/sample-product.png') }}"
@@ -495,7 +547,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="border border-abu bg-white p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
+                <div class="border border-abu bg-putih p-6 shadow-sm dark:border-gray-700 dark:bg-gray-800">
                     <div class="h-56 w-auto overflow-hidden">
                         <a href="#">
                             <img class="mx-auto h-full dark:hidden" src="{{ asset('assets/img/sample-product.png') }}"
@@ -582,7 +634,8 @@
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                             <div class="bg-putih rounded-sm p-6 shadow-sm">
                                 <h3 class="text-3xl font-semibold text-hijau">Mengapa Investasi Emas?</h3>
-                                <p class="mt-4 text-md text-emas font-paragraph text-justify min-h-20">Emas adalah salah satu investasi
+                                <p class="mt-4 text-md text-emas font-paragraph text-justify min-h-20">Emas adalah salah
+                                    satu investasi
                                     paling stabil dan
                                     menguntungkan sepanjang masa. Dengan nilai yang terus meningkat, emas memberikan
                                     perlindungan finansial dan diversifikasi portofolio yang solid.</p>
@@ -592,7 +645,8 @@
                             </div>
                             <div class="bg-putih rounded-sm p-6 shadow-sm">
                                 <h3 class="text-3xl font-semibold text-hijau">Beli Emas di PT Key Gold Investama</h3>
-                                <p class="mt-4 text-md text-emas font-paragraph text-justify min-h-20">PT Key Gold Investama
+                                <p class="mt-4 text-md text-emas font-paragraph text-justify min-h-20">PT Key Gold
+                                    Investama
                                     menyediakan emas berkualitas tinggi
                                     dengan harga kompetitif. Kami menjamin keamanan transaksi dan keaslian produk yang Anda
                                     beli.</p>

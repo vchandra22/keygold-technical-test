@@ -23,13 +23,11 @@
 </head>
 
 <body>
-    @include('frontend.layout.navbar')
 
     <section class="antialiased">
         @yield('content')
     </section>
 
-    @include('frontend.layout.footer')
 </body>
 
 </html>
