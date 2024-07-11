@@ -3,8 +3,8 @@
         <div class="flex items-center justify-between">
             <div class="flex items-center justify-start rtl:justify-end">
                 <button data-drawer-target="default-sidebar" data-drawer-toggle="default-sidebar"
-                    aria-controls="default-sidebar" type="button" cla
-                    font-mediumss="inline-flex items-center p-2 text-md text-gray-500 rounded-lg sm:hidden hover:bg-gray-100 dark:hover:bg-gray-700">
+                    aria-controls="default-sidebar" type="button"
+                    class="p-2 text-md text-gray-500 rounded-sm block md:hidden hover:bg-gray-100 dark:hover:bg-gray-700">
                     <span class="sr-only">Open sidebar</span>
                     <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                         xmlns="http://www.w3.org/2000/svg">
@@ -73,17 +73,26 @@
 </nav>
 
 <aside id="default-sidebar"
-    class="fixed top-0 left-0 z-40 w-64 h-full pt-32 transition-transform -translate-x-full bg-putih border-r border-gray-100 sm:translate-x-0"
+    class="fixed top-0 left-0 z-40 w-64 h-full pt-20 transition-transform -translate-x-full bg-putih border-r border-gray-100 sm:translate-x-0"
     aria-label="Sidebar">
-    <div class="mt-[4.4rem] h-full flex flex-col justify-between px-3 pb-4 overflow-y-auto bg-putih">
+    <div class="h-full flex flex-col justify-between px-3 pb-4 overflow-y-auto bg-putih">
         <ul class="space-y-4 font-semibold tracking-wide">
             <li>
                 <a href="{{ route('admin.dashboard') }}"
-                    class="flex items-center gap-8 p-2 text-emas rounded-lg dark:text-secondary hover:text-putih dark:hover:text-white group">
+                    class="flex items-center gap-8 p-2 text-emas rounded-lg dark:text-secondary hover:text-hijau hover:bg-abu group">
                     <div class="w-5 h-6 text-emas transition duration-75 group-hover:text-hijau">
                         <i class="fa-solid fa-layer-group fa-lg"></i>
                     </div>
                     <span class="ms-4">Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="{{ route('admin.product') }}"
+                    class="flex items-center gap-8 p-2 text-emas rounded-lg dark:text-secondary hover:text-hijau hover:bg-abu group">
+                    <div class="w-5 h-6 text-emas transition duration-75 group-hover:text-hijau">
+                        <i class="fa-solid fa-box-open fa-lg"></i>
+                    </div>
+                    <span class="ms-4">Produk</span>
                 </a>
             </li>
         </ul>
@@ -92,7 +101,7 @@
             <ul class="space-y-4 font-semibold tracking-wide">
                 <li>
                     <a href="#"
-                        class="flex items-center p-2 text-emas rounded-lg dark:text-secondary hover:text-putih dark:hover:text-white group">
+                        class="flex items-center p-2 text-emas rounded-lg dark:text-secondary hover:text-hijau hover:bg-abu group">
                         <div class="w-5 h-6 text-gray-500 transition duration-75 group-hover:text-hijau">
                             <i class="fa-solid fa-gear fa-lg"></i>
                         </div>
@@ -101,7 +110,7 @@
                 </li>
                 <li>
                     <form action="{{ route('auth.logout') }}" method="POST"
-                        class="flex items-center p-2 text-emas rounded-lg dark:text-secondary hover:text-putih dark:hover:text-white group">
+                        class="flex items-center p-2 text-emas rounded-lg dark:text-secondary hover:text-hijau hover:bg-abu group">
                         @csrf
                         <button type="submit">
                             <div class="w-full h-6 text-gray-500 transition duration-75 group-hover:text-hijau">

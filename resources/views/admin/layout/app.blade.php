@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     {{-- vite dependency --}}
-    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @vite(['resources/css/app.css', 'resources/js/app.js', 'resources/js/data-table.js'])
 
     {{-- gfonts dependency --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -19,6 +19,17 @@
     {{-- Fontawesome icon CDN --}}
     <script src="https://kit.fontawesome.com/bfb24335ca.js" crossorigin="anonymous"></script>
 
+    {{-- jQuery --}}
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    {{-- DataTable --}}
+    <link href="https://cdn.datatables.net/v/dt/dt-2.0.3/datatables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/v/dt/dt-2.0.3/datatables.min.js"></script>
+
+    {{-- Memuat source WYSIWYG ckeditor5 --}}
+    <script src="{{ asset('assets/vendor/ckeditor5/build/ckeditor.js') }}"></script>
+
     <title>{{ __(@$pageTitle) }} - {{ get_app_name() }}</title>
 </head>
 
@@ -28,6 +39,7 @@
         @yield('content')
     </section>
 
+    @stack('script')
 </body>
 
 </html>
