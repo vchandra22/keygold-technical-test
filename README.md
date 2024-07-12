@@ -32,6 +32,8 @@
 -   Password: `password`
 -   Database: `keygold_db`
 
+-   Mohon lakukan import file database (.sql) dari folder db/keygold_db.sql
+
 # Catatan
 
 ### Basic docker compose commands
