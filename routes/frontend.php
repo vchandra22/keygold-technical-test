@@ -14,5 +14,10 @@ Route::middleware(['web'])->group(function () {
     Route::post('register', [RegisterUserController::class, 'store'])->name('auth.sign-up');
 
     Route::get('product/{uuid}', [MainIndexController::class, 'show'])->name('frontend.detailProduct');
+    Route::get('product-cart', [MainIndexController::class, 'create'])->name('frontend.cartProduct');
+});
 
+
+Route::middleware(['auth'])->group(function () {
+    Route::post('/tambah-pesanan/{uuid}', [MainIndexController::class, 'store'])->name('cart.storeProduct');
 });

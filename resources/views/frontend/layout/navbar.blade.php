@@ -52,7 +52,7 @@
                                     <div
                                         class="inline-flex items-center w-full justify-start gap-4 cursor-default py-3 hover:bg-gray-100">
                                         <i class="px-4 fa-solid fa-cart-shopping"></i>
-                                        <a href="#" class="hover:bg-gray-100">
+                                        <a href="{{ route('frontend.cartProduct') }}" class="hover:bg-gray-100">
                                             Pesanan Saya
                                         </a>
                                     </div>

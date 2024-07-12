@@ -15,7 +15,7 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->uuid('uuid')->index();
             $table->unsignedBigInteger('user_id')->unique();
-            $table->text('keterangan');
+            $table->text('keterangan')->nullable();
             $table->integer('total_pemesanan');
             $table->timestamps();
 

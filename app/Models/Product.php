@@ -28,6 +28,11 @@ class Product extends Model
         'og_image',
     ];
 
+    public function transactionDetails()
+    {
+        return $this->hasMany(TransactionDetail::class, 'produk_id');
+    }
+    
     protected static function boot()
     {
         parent::boot();

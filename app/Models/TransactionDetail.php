@@ -21,6 +21,16 @@ class TransactionDetail extends Model
         'total_harga',
     ];
 
+    public function product()
+    {
+        return $this->belongsTo(Product::class, 'produk_id');
+    }
+
+    public function transaction()
+    {
+        return $this->belongsTo(Transaction::class, 'transaksi_id');
+    }
+
     protected static function boot()
     {
         parent::boot();
